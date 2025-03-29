@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask MVC App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Welcome Message -->
+    <div class="welcome-container">
+    </div>
+
+    <!-- Weather Effects (Rain, Clouds) -->
+    <div class="weather-effects">
+        <div class="rain"></div>
+    </div>
+
+    <!-- Weather Info (City, Icon, Temp, Condition) -->
+    <div class="content">
+        <h1>Welcome, {{ user.name }}!</h1>
+
+        <div class="weather-header">
+            <h2 id="weather-city">Loading...</h2>
+            <img id="weather-icon" src="" alt="Weather Icon" style="width: 50px;">
+        </div>
+
+        <div id="clock" class="clock"></div>
+
+        <div class="weather-info">
+            <p><strong>Temperature:</strong> <span id="weather-temp"></span></p>
+            <p><strong>Condition:</strong> <span id="weather-desc"></span></p>
+        </div>
+    </div>
+
+    </div>
+
+    <body>
+        <div class="sun-container">
+            <div class="sun"></div>
+
+            <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        </div>
+    </body>
+    
+
+    <script src="{{ url_for('static', filename='weather.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='sun.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='clock.js') }}" defer></script>
+
+</body>
+
+</html>

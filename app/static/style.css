@@ -1,0 +1,174 @@
+/* Apply full-page background */
+h1, p {
+    display: block;
+}
+
+@keyframes gradientScroll {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    flex-direction: column;
+
+    /* Gradient Background */
+    background: linear-gradient(270deg, #ff7e5f, #feb47b, #eff898, #72d3ff);
+    background-size: 400% 400%; /* Ensure scrolling effect */
+    
+    /* Fix the animation */
+    animation: gradientScroll 10s infinite linear;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top:100px ;    
+}
+
+/* Clock Styling */
+.clock {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+
+/* Align city name and icon */
+.weather-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Container for rain */
+.rain {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+/* Creating multiple raindrops */
+.rain div {
+    position: absolute;
+    width: 2px;
+    height: 20px; /* Length of rain drop */
+    background: rgba(0, 0, 0, 0.6); /* Light blue rain color */
+    opacity: 0.8;
+    transform: rotate(50deg);
+    animation: fall linear infinite;
+}
+
+/* Rain animation */
+@keyframes fall {
+    from {
+        transform: translateY(-100vh) translateX(10px) rotate(10deg); /* Move down + slight right */
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh) translateX(-10px) rotate(10deg); /* Move down + slight left */
+        opacity: 0;
+    }
+}
+
+/* Cloud Container */
+.clouds {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+/* General Cloud Styling */
+.cloud {
+    position: absolute;
+    width: 200px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    box-shadow: 20px 10px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
+}
+
+/* Individual Clouds */
+.cloud1 {
+    top: 30%;
+    left: 10%;
+    animation: cloudBounce 8s ease-in-out infinite alternate;
+}
+
+.cloud2 {
+    top: 50%;
+    left: 50%;
+    animation: cloudBounce 10s ease-in-out infinite alternate;
+}
+
+@keyframes cloudBounce {
+    from {
+        transform: translateX(-50px);
+    }
+    to {
+        transform: translateX(50px);
+    }
+}
+
+/* Sun container */
+.sun-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: sunrise 5s ease-in-out forwards, bob 3s infinite ease-in-out 5s;
+}
+
+/* The Sun */
+.sun {
+    width: 200px;  /* Adjust size */
+    height: 200px;
+    background: radial-gradient(circle, yellow, orange); /* Sun color gradient */
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 50px rgba(255, 165, 0, 0.8); /* Glowing effect */
+}
+
+/* Sunrise animation (float-in effect) */
+@keyframes sunrise {
+    from {
+        top: 90%;
+        opacity: 0;
+    }
+    to {
+        top: 10%;
+        opacity: 1;
+    }
+}
+
+/* Bobbing animation (smooth up and down motion) */
+@keyframes bob {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); } /* Moves up */
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+
+
